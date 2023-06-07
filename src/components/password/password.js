@@ -44,10 +44,13 @@ export default function Password() {
         
         if (tempChoices.length === 0) {
             setLowerCase(true)
+            tempChoices.push("lowercase")
         }
-        
+
         setSelectedChoices(tempChoices)
     }
+
+    console.log("lower: ", lowerCase)
 
     const generatePassword = () => {
         let staticPassword = ''
@@ -145,7 +148,6 @@ export default function Password() {
                             type="checkbox"
                             name="upper" 
                             id="upper"
-                            // disabled={selectedChoices.length === 1 && selectedChoices.includes("uppercase")}
                             checked={upperCase}
                             onChange={() => { setUpperCase(!upperCase); handleCheckbox('uppercase') }} 
                         />
@@ -156,7 +158,6 @@ export default function Password() {
                             type="checkbox" 
                             name="lower"
                             id="lower" 
-                            disabled={selectedChoices.length === 0}
                             checked={lowerCase}
                             onChange={() => { setLowerCase(!lowerCase); handleCheckbox('lowercase') }} 
                         />
@@ -167,7 +168,6 @@ export default function Password() {
                             type="checkbox" 
                             name="numbers"
                             id="numbers" 
-                            // disabled={selectedChoices.length === 1 && selectedChoices.includes("numbers")}
                             checked={numbers}
                             onChange={() => { setNumbers(!numbers); handleCheckbox('numbers') }} 
                         />
@@ -178,7 +178,6 @@ export default function Password() {
                             type="checkbox" 
                             name="special"
                             id="special" 
-                            // disabled={selectedChoices.length === 1 && selectedChoices.includes("special")}
                             checked={special}
                             onChange={() => { setSpecial(!special); handleCheckbox('special') }} 
                         />
