@@ -38,12 +38,14 @@ export default function Password() {
         if (tempChoices.includes(type)) {
             const index = tempChoices.indexOf(type)
             tempChoices.splice(index, 1)
+        } else {
+            tempChoices.push(type)
         }
         
         if (tempChoices.length === 0) {
             setLowerCase(true)
         }
-
+        
         setSelectedChoices(tempChoices)
     }
 
@@ -154,7 +156,7 @@ export default function Password() {
                             type="checkbox" 
                             name="lower"
                             id="lower" 
-                            // disabled={selectedChoices.length === 1 && selectedChoices.includes("lowercase")}
+                            disabled={selectedChoices.length === 0}
                             checked={lowerCase}
                             onChange={() => { setLowerCase(!lowerCase); handleCheckbox('lowercase') }} 
                         />

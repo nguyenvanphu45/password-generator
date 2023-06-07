@@ -1,5 +1,5 @@
 import './App.css';
-import Password from './components/password';
+import Password from './components/password/password.js';
 
 function App() {
   return (
