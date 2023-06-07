@@ -1,38 +1,63 @@
-.App {
+.form {
+  width: 500px;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 70px;
+}
+
+h1 {
+  color: #222319;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+p {
+  font-weight: 300;
+  font-size: 14px;
+  margin-bottom: 16px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.strength {
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  font-weight: 600;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media only screen and (max-width: 480px) {
+  .form {
+    width: 300px;
+    padding: 10px 40px;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  h1 {
+    font-size: 16px;
   }
-  to {
-    transform: rotate(360deg);
+
+  p {
+    font-size: 12px;
+  }
+
+  .input input {
+    width: 60%;
+  }
+
+  .input .input-icon {
+    right: 100px;
+  }
+
+  .input button {
+    padding: 8px 10px;
+  }
+
+  .slide .slider {
+    height: 10px;
   }
 }
