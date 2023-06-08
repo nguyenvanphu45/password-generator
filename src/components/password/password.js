@@ -22,7 +22,8 @@ export default function Password() {
     const [colorPasswordError, setColorPasswordError] = useState('')
     const [selectedChoices, setSelectedChoices] = useState(['uppercase', 'lowercase', 'numbers', 'special'])
 
-    const regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9])(?=.*[d$!@#$%^&*()]).*$";
+    const regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*?[0-9]).*$";
+    const strongRegex = "^(?=.*[d$!@#$%^&*()]).*$";
 
     useEffect(() => {
         generatePassword()
@@ -50,8 +51,6 @@ export default function Password() {
         setSelectedChoices(tempChoices)
     }
 
-    console.log("lower: ", lowerCase)
-
     const generatePassword = () => {
         let staticPassword = ''
 
@@ -78,17 +77,18 @@ export default function Password() {
             setPasswordError("Too short");
             setColorPasswordError("red")
         } else {
-            if (tempPassword.match(regex)) {
+            if (tempPassword.match(regex) && tempPassword.match(strongRegex)) {
                 setPasswordError("Hard");
                 setColorPasswordError("green")
+            } else if (tempPassword.match(strongRegex) || selectedChoices.length === 3) {
+                setPasswordError("Medium");
+                setColorPasswordError("orange");
             } else {
-                setPasswordError("")
+                setPasswordError("Week");
+                setColorPasswordError("red");
             }
 
-            if (selectedChoices.length === 3) {
-                setPasswordError("Medium");
-                setColorPasswordError("orange")
-            } else if (selectedChoices.length === 2) {
+            if (selectedChoices.length === 2) {
                 setPasswordError("Easy");
                 setColorPasswordError("red");
             }
