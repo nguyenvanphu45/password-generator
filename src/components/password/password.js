@@ -52,25 +52,29 @@ export default function Password() {
     }
 
     const generatePassword = () => {
-        let staticPassword = ''
+        let staticPassword = []
 
         if (lowerCase) {
-            staticPassword += lowercaseList
+            staticPassword.push(lowercaseList)
         }
         if (upperCase) {
-            staticPassword += uppercaseList
+            staticPassword.push(uppercaseList)
         }
         if (numbers) {
-            staticPassword += numbersList
+            staticPassword.push(numbersList)
         }
         if (special) {
-            staticPassword += specialList;
+            staticPassword.push(specialList)
         }
 
-        let tempPassword = "";
+        let tempPassword = '';
+        console.log(staticPassword)
         
         for (let i = 0; i < widthInput; i++) {
-            tempPassword += staticPassword[Math.floor(Math.random() * staticPassword.length)]
+            const random = staticPassword[Math.floor(Math.random() * staticPassword.length)]
+            const randomPassword = random.charAt(Math.floor(Math.random() * random.length))
+
+            tempPassword += randomPassword
         }
 
         if (tempPassword.length < 8) {
@@ -84,7 +88,7 @@ export default function Password() {
                 setPasswordError("Medium");
                 setColorPasswordError("orange");
             } else {
-                setPasswordError("Week");
+                setPasswordError("Weak");
                 setColorPasswordError("red");
             }
 
@@ -94,7 +98,7 @@ export default function Password() {
             }
         }
 
-        setPassword(tempPassword)
+        setPassword(tempPassword);
     }
 
     const copyPassword = async () => {
